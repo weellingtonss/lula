@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.game-board {
+  width: 100%;
+  height: 500px;
+  background: linear-gradient(-50deg, #009c3b, #ffdf00, #002776, #ffff);
+  animation: bg 5ms ease infinite;
+  border-bottom: 20px solid rgb(0, 0, 0);
+  margin: 0 auto;
+  position: relative; /* Para que respeite os limites das bordas */
+  overflow: hidden; /* Para que tudo que sair das bordas do quadro não apareça mais na tela */
+}
+
+@keyframes bg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+  opacity: 20%;
+}
+
+.pipe {
+  position: absolute; /* Para que uma img não interfira no comportamento da outra img */
+  bottom: 0;
+  width: 200px;
+  animation: pipe-animation 2.5s infinite linear; /* Para chamar a animação feita logo abaixo com a duração de 2 segundos rodando infinito e constante (linear) sem desaceleração na velocidade */
+}
+
+.mario {
+  width: 400px;
+  position: absolute;
+  bottom: 0;
+}
+
+.jump {
+  animation: jump 950ms ease-out; /* Para chamar a animação do pulo do Mário, ease-out para ele cair suavemente após pular */
+}
+
+.clouds {
+  position: absolute;
+  width: 400px;
+  animation: clouds-animation 20s infinite linear;
+  z-index: 0;
+}
+
+.cogumelo {
+  position: absolute;
+  width: 100px;
+  animation: cogumelo-animation 10s infinite linear;
+  bottom: 75%;
+}
+
+/* Animação do cano iniciando pela direita do quadro e sumindo quando chegar na borda esquerda */
+
+@keyframes pipe-animation {
+  from {
+    right: 0; /* Para o cano iniciar a animação no canto direito */
+  }
+  to {
+    right: 100%; /* Para o cano sair fora da borda esquerda e sumir da tela */
+  }
+}
+
+/* Animação do pulo do Mário */
+
+@keyframes jump {
+  0% {
+    bottom: 0;
+  }
+
+  40% {
+    bottom: 180px;
+  }
+
+  45% {
+    bottom: 180px;
+  }
+
+  50% {
+    bottom: 200px;
+  }
+
+  55% {
+    bottom: 180px;
+  }
+
+  60% {
+    bottom: 180px;
+  }
+
+  100% {
+    bottom: 0;
+  }
+}
+
+/* Animação das nuvens */
+
+@keyframes clouds-animation {
+  from {
+    right: -400px;
+  }
+
+  to {
+    right: 100%;
+  }
+}
+
+/* Animação cogumelo */
+@keyframes cogumelo-animation {
+  from {
+    right: 0;
+  }
+
+  to {
+    right: 100%;
+  }
+}
